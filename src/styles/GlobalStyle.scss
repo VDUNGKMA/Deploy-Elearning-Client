@@ -1,0 +1,222 @@
+// style chung
+@import 'normalize.css';
+
+// responsive
+@mixin responsive($breakpoint) {
+  @if $breakpoint==xs {
+    @media (max-width: 575.98px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint==sm {
+    @media (min-width: 576px) and (max-width: 767.98px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint==md {
+    @media (min-width: 768px) and (max-width: 991.98px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint==lg {
+    @media (min-width: 992px) and (max-width: 1199.98px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint==xl {
+    @media (min-width: 1200px) {
+      @content;
+    }
+  }
+}
+
+:root {
+  //color
+  --primaryColor: linear-gradient(90deg,
+      rgb(94, 187, 255) 0%,
+      rgb(161, 116, 255) 100%);
+  --secondaryColor: #6c4fd9;
+  --hoverSecondaryColor: #33006f;
+  --titleColor: #0a342f;
+  --textColor: #333333;
+  --colorDark: #191d1e;
+
+  //font
+  --font-family: 'SVN-Poppins';
+}
+
+[data-theme='dark'] {
+  background-color: var(--colorDark) !important;
+  color: #ffffffe6 !important;
+
+  .dark {
+    background-color: var(--colorDark) !important;
+    color: #ffffffe6 !important;
+
+    a {
+      background-color: var(--colorDark) !important;
+      color: #ffffffe6 !important;
+    }
+
+    p {
+      color: #ffffffe6;
+    }
+  }
+
+  footer {
+    color: #fff !important;
+    background-color: var(--colorDark) !important;
+
+    li,
+    a {
+      color: #fff !important;
+    }
+  }
+}
+
+.text-common {
+  background-image: var(--primaryColor);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 1.5;
+  text-rendering: optimizeSpeed;
+  overflow-y: overlay;
+  overflow-x: hidden;
+
+  @include responsive(sm) {
+    font-size: 1.2rem;
+  }
+}
+
+//scroll bar
+html *::-webkit-scrollbar {
+  border-radius: 0;
+  width: 0.8rem;
+}
+
+html *::-webkit-scrollbar-thumb {
+  border-radius: 0.4rem;
+  background-color: #d0d0d0;
+
+  &:hover {
+    background-color: #a0a0a0;
+  }
+}
+
+html *::-webkit-scrollbar-track {
+  border-radius: 0;
+  background-color: #f9f9f9;
+}
+
+[data-theme='dark'] {
+  *::-webkit-scrollbar-thumb {
+    border-radius: 0.4rem;
+    background-color: #3b3f40;
+
+    &:hover {
+      background-color: #3b3f40;
+    }
+  }
+
+  *::-webkit-scrollbar-track {
+    border-radius: 0;
+    background-color: #191d1e;
+  }
+}
+
+// reset the a, button va input
+a {
+  color: var(--textColor);
+  text-decoration: none;
+}
+
+button,
+input,
+[tabindex] {
+  outline: none;
+  border: none;
+}
+
+.btn-common {
+  background: var(--primaryColor);
+  color: #ffffffe6;
+}
+
+//fonts embedded
+@font-face {
+  font-family: 'SVN-Poppins';
+  src: url('../assets/font/SVN-Poppins.woff2');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'SVN-Poppins';
+  src: url('../assets/font/SVN-PoppinsBold.woff2');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'SVN-Poppins';
+  src: url('../assets/font/SVN-PoppinsMedium.woff2');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'SVN-Poppins';
+  src: url('../assets/font/SVN-PoppinsSemiBold.woff2');
+  font-weight: 600;
+}
+
+//grid
+.wide {
+  max-width: 1170px;
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+
+  @include responsive(xs) {
+    padding: 10px 20px !important;
+  }
+
+  @include responsive(xl) {
+    max-width: 1170px;
+  }
+
+  @include responsive(lg) {
+    max-width: 992px;
+  }
+}
+
+ul a.active {
+  background-color: #33006f;
+}
+
+.slick-dots {
+  z-index: 2 !important;
+}

@@ -1,0 +1,147 @@
+@mixin responsive($breakpoint) {
+  @if $breakpoint==xs {
+    @media (max-width: 575.98px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint==sm {
+    @media (min-width: 576px) and (max-width: 767.98px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint==md {
+    @media (min-width: 768px) and (max-width: 991.98px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint==lg {
+    @media (min-width: 992px) and (max-width: 1199.98px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint==xl {
+    @media (min-width: 1200px) {
+      @content;
+    }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.slides {
+  position: relative;
+
+  .carouselSlice {
+    background: var(--primaryColor);
+    color: #ffffffe6;
+    margin: 8px;
+    border-radius: 16px;
+
+    ul li {
+      width: 36px !important;
+      height: 6px !important;
+      border-radius: 999px !important;
+    }
+
+    ul li.slick-active {
+      width: 46px !important;
+      height: 7px;
+      border-radius: 100%;
+      background: red;
+    }
+
+    ul li button {
+      height: 6px !important;
+      border-radius: 999px !important;
+    }
+  }
+
+  .ant-carousel {
+    .slick-next {
+      &::before {
+        content: '';
+      }
+    }
+
+    .slick-prev {
+      &::before {
+        content: '';
+      }
+    }
+  }
+
+  .preSlide {
+    top: 50%;
+    left: 0;
+  }
+
+  .nextSlide,
+  .preSlide {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    position: absolute;
+    translate: 0 -50%;
+    background-color: #ffffffe6;
+    text-align: center;
+    line-height: 50px;
+    user-select: none;
+  }
+
+  .nextSlide {
+    right: 0;
+    top: 50%;
+  }
+}
+
+.arrowToTop {
+  position: fixed;
+  bottom: 50px;
+  right: 90px;
+  z-index: 4;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: transparent;
+  color: var(--secondaryColor);
+
+  &.isHidden {
+    display: none;
+  }
+
+  &:hover {
+    // background-color: orange;
+
+    .icon {
+      // color: #ffffffe6;
+    }
+  }
+
+  .icon {
+    font-size: 4.5rem;
+  }
+
+  @include responsive(xs) {
+    display: none;
+
+  }
+
+  @include responsive(sm) {
+    display: none;
+  }
+
+  @include responsive(md) {
+    bottom: 30px;
+    right: 20px;
+  }
+}
